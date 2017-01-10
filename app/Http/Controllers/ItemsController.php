@@ -96,6 +96,19 @@ class ItemsController extends Controller
 
 	}
 
+	// Deletes an item in the database.
+
+	public function destroy($id)
+	{
+
+		$item = Item::findOrFail($id);
+
+		$item->delete();
+
+		return redirect()->route('items.index');
+
+	}
+
 
 
 }
