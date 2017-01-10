@@ -3,8 +3,8 @@
 @section('content')
 
 
-<h1>Main Page - Shopping List Helper</h1>
-<p class="lead">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam</p>
+<h1>Shopping List Manager - Laravel App</h1>
+<p class="lead">Please click one of the below links to get started!</p>
 
 <hr>
 

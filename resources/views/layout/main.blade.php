@@ -11,7 +11,7 @@
 <nav class="navbar navbar-default">
 	<div class="container-fluid">
 		<div class="navbar-header">
-			<a class="navbar-brand" href="#">Items</a>
+			<a class="navbar-brand" href="{{ route('items.index') }}">Items</a>
 		</div>
 		<div class="nav navbar-nav navbar-right">
 			<li><a href="{{ route('home') }}">Home</a></li>

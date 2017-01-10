@@ -4,7 +4,6 @@
 
 <h1>Item : {{ $item->itemName }}</h1>
 <p class="lead">Quantity : {{ $item->quantity }}</p>
-<a href="{{ route('items.edit', $item->id) }}" class="btn btn-primary">Edit Item</a>
 
 <div class="row">
     <div class="col-md-6">
