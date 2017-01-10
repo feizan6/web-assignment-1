@@ -9,8 +9,7 @@ use App\Item;
 class ItemsController extends Controller
 {
     
-	// Index function. 
-	// Passes through an array of existing shopping list items and navigates to the view.
+	// Passes through the array of existing shopping list items and navigates to the view.
 
 	public function index() 
 	{
@@ -29,8 +28,32 @@ class ItemsController extends Controller
 
 	}
 
-	// function to store a shopping list item based on user parameters.
-	// validates data to ensure db integrity. for this case max. quantity of items a user can add is 100. 
+
+	// show an individual item.
+
+	public function show($id)
+	{
+
+		$item = Item::findOrFail($id);
+
+		return view('items.show')->withItem($item);
+	}
+
+
+	//  passes through $id of item the user wants to amend and provides asso. view. 
+
+	public function edit($id)
+	{
+
+		$item = Item::findOrFail($id);
+
+		return view('items.edit')->withItem($item);
+
+
+	}
+
+
+	// Store a item based on user parameters. Validates data to ensure db integrity. max. quantity of items a user can add is 100. 
 
 
 	public function store(Request $request) 
@@ -39,7 +62,7 @@ class ItemsController extends Controller
 		$this->validate($request, [
 
 			'itemName'=>'required',
-			'quantity'=> 'required|numeric|max:100'
+			'quantity'=> 'required|numeric|min:1|max:100'
 
 			]);
 
@@ -50,5 +73,29 @@ class ItemsController extends Controller
 		return redirect()->back(); 
 
 	}
+
+	// Updates an existing item in the database.
+
+	public function update($id, Request $request) 
+	{
+
+		$item = Item::findOrFail($id);
+
+		$this->validate($request, [
+
+			'itemName'=>'required',
+			'quantity'=> 'required|numeric|min:1|max:100'
+
+			]);
+
+		$input = $request->all();
+
+		$item->fill($input)->save();
+
+		return redirect('items');
+
+	}
+
+
 
 }

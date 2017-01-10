@@ -3,25 +3,18 @@
 
 @section('content')
 
-<h1>Add to your shopping list.</h1>
+<h1>Amend Item Details</h1>
 
+<p class="lead">Update the details for the current shopping list item. <a href="{{route('items.index') }}">Go back to your shopping list.</a></p>
 <hr>
 
-@if($errors->any())
-    <div class="alert alert-danger">
-        @foreach($errors->all() as $error)
-            <p>{{ $error }}</p>
-        @endforeach
-    </div>
-@endif
 
-
-{!! Form::open([
-    'route' => 'items.store'
+{!! Form::model($item, [
+    'method' => 'PATCH',
+    'route' => ['items.update', $item->id]
 ]) !!}
 
 <div class="form-group">
-
     {!! Form::label('itemName', 'Item Name:', ['class' => 'control-label']) !!}
     {!! Form::text('itemName', null, ['class' => 'form-control']) !!}
 </div>
@@ -31,9 +24,10 @@
     {!! Form::text('quantity', null, ['class' => 'form-control']) !!}
 </div>
 
-{!! Form::submit('Add a new item', ['class' => 'btn btn-primary']) !!}
+{!! Form::submit('Amend Item', ['class' => 'btn btn-primary']) !!}
 
 {!! Form::close() !!}
 
-
 @stop
+
+
