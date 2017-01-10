@@ -19,7 +19,7 @@
 
 @endforeach
 
-<h4>Total no. of items in the basket : {{ $item->sum('quantity') }}</h4>
+
 
 
 @stop
