@@ -19,5 +19,8 @@
 
 @endforeach
 
+<h3>Price : £<?php use App\Http\Controllers\ItemsController;
+echo ItemsController::total(); ?></h3>
+
 
 @stop

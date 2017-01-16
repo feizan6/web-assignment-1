@@ -112,5 +112,20 @@ class ItemsController extends Controller
 	}
 
 
+	// function to calculate total price for items added to the basket.
+	// 
+
+	public static function total()
+    {
+
+    	$items = Item::select([
+    	'*', \DB::raw('ROUND(quantity * price, 2) AS total')
+		])
+		->get();
+
+		return $items->sum('total');
+
+	}
+
 
 }
