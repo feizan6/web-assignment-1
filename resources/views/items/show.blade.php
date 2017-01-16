@@ -4,7 +4,7 @@
 
 <h1>Item : {{ $item->itemName }}</h1>
 <p class="lead">Quantity : {{ $item->quantity }}</p>
-
+<p class="lead">Price : {{ $item->price }}</p>
 <div class="row">
     <div class="col-md-6">
         <a href="{{ route('items.index') }}" class="btn btn-info">Back to items list</a>

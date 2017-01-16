@@ -62,7 +62,8 @@ class ItemsController extends Controller
 		$this->validate($request, [
 
 			'itemName'=>'required',
-			'quantity'=> 'required|numeric|min:1|max:100'
+			'quantity'=> 'required|numeric|min:1|max:100',
+			'price'=>'required|numeric'
 
 			]);
 
@@ -84,7 +85,8 @@ class ItemsController extends Controller
 		$this->validate($request, [
 
 			'itemName'=>'required',
-			'quantity'=> 'required|numeric|min:1|max:100'
+			'quantity'=> 'required|numeric|min:1|max:100',
+			'price'=>'required|numeric'
 
 			]);
 

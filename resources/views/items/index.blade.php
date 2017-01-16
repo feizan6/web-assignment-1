@@ -12,14 +12,12 @@
 
 @foreach($items as $item)
 
-<h4>{{ $item->itemName}} <p style="float:right"> {{ $item->quantity}} </h4>
+<h4>{{ $item->itemName}} -  {{ $item->price }}<p style="float:right"> {{ $item->quantity}} </h4>
 <a href="{{route('items.show', $item->id) }}" class="btn btn-primary btn-sm">View Item</a>
 <a href="{{route('items.edit', $item->id) }}" class="btn btn-primary btn-sm">Edit Item</a>
 <hr>
 
 @endforeach
-
-
 
 
 @stop

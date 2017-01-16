@@ -24,6 +24,13 @@
     {!! Form::text('quantity', null, ['class' => 'form-control']) !!}
 </div>
 
+<div class="form-group">
+    {!! Form::label('price', 'Price:', ['class' => 'control-label']) !!}
+    {!! Form::text('price', null, ['class' => 'form-control']) !!}
+    
+</div>
+
+
 {!! Form::submit('Amend Item', ['class' => 'btn btn-primary']) !!}
 
 {!! Form::close() !!}
