@@ -62,7 +62,8 @@ class ItemsController extends Controller
 		$this->validate($request, [
 
 			'itemName'=>'required',
-			'quantity'=> 'required|numeric|min:1|max:100'
+			'quantity'=> 'required|numeric|min:1|max:100',
+			'price'=>'required|numeric'
 
 			]);
 
@@ -84,7 +85,8 @@ class ItemsController extends Controller
 		$this->validate($request, [
 
 			'itemName'=>'required',
-			'quantity'=> 'required|numeric|min:1|max:100'
+			'quantity'=> 'required|numeric|min:1|max:100',
+			'price'=>'required|numeric'
 
 			]);
 
@@ -109,6 +111,21 @@ class ItemsController extends Controller
 
 	}
 
+
+	// function to calculate total price for items added to the basket.
+	// 
+
+	public static function total()
+    {
+
+    	$items = Item::select([
+    	'*', \DB::raw('ROUND(quantity * price, 2) AS total')
+		])
+		->get();
+
+		return $items->sum('total');
+
+	}
 
 
 }
