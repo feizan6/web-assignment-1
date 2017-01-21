@@ -75,6 +75,7 @@ class ItemsController extends Controller
 
 	}
 
+
 	// Updates an existing item in the database.
 
 	public function update($id, Request $request) 
@@ -111,6 +112,24 @@ class ItemsController extends Controller
 
 	}
 
+	
+
+	public static function results(Request $request)
+	{
+
+			// Gets the query string from our form submission 
+    $query = $request->input('search');
+    // Returns an array of articles that have the query string located somewhere within 
+    // our articles titles. Paginates them so we can break up lots of search results.
+  	$items = \DB::table('items')->where('itemName', 'LIKE', '%' . $query . '%')->paginate(10);
+        
+	// returns a view and passes the view the list of articles and the original query.
+    return view('items.search', compact('items', 'query'));
+
+
+   	
+ 	}
+
 
 	// function to calculate total price for items added to the basket.
 	// 
@@ -126,6 +145,7 @@ class ItemsController extends Controller
 		return $items->sum('total');
 
 	}
+
 
 
 }

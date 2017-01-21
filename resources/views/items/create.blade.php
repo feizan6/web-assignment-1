@@ -20,6 +20,7 @@
     'route' => 'items.store'
 ]) !!}
 
+
 <div class="form-group">
 
     {!! Form::label('itemName', 'Item Name:', ['class' => 'control-label']) !!}

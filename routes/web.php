@@ -18,3 +18,11 @@ Route::get('/', [
 ]);
 
 Route::resource('items', 'ItemsController');
+
+// Route::post('results', 'ItemsController@results');
+
+Route::post('result',[
+    'as' => 'items.searchresults',
+    'uses' => 'ItemsController@results'
+]);
+
