@@ -11,12 +11,14 @@
         <a href="{{ route('items.edit', $item->id) }}" class="btn btn-primary">Amend Item</a>
     </div>
     <div class="col-md-6 text-right">
+
         {!! Form::open([
-            'method' => 'DELETE',
-            'route' => ['items.destroy', $item->id]
+        'method' => 'DELETE',
+        'route' => ['items.destroy', $item->id]
         ]) !!}
-            {!! Form::submit('Remove this item?', ['class' => 'btn btn-danger']) !!}
+        {!! Form::submit('Remove this item?', ['class' => 'btn btn-danger']) !!}
         {!! Form::close() !!}
+        
     </div>
 </div>
 
