@@ -3,7 +3,8 @@
 
 @section('content')
 
-<h1>Add to your shopping list.</h1>
+<h1>Add a new item.</h1>
+<h4>Or alternatively <a href="{{route('items.index') }}">go back to your shopping list.</a></h4>
 
 <hr>
 

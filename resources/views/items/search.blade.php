@@ -9,21 +9,45 @@
 
 @elseif (count($items) >= 1)
 
-<h4>Results below : </h4>
+<h4>Results for your query below : </h4>
 
-<hr>
+<table style="width:100%" class="table table-hover">
+	<tr>
 
-@foreach($items as $item)
+		<th>Item Name</th>
+		<th>Base Price</th>
+		<th>Quantity ordered</th> 
+		<th>Price x Qty</th>
 
-<h4>{{ $item->itemName}}  {{ $item->price * $item->quantity }}<p style="float:right"> {{ $item->quantity}} </h4>
+	</tr>
 
-<a href="{{route('items.show', $item->id) }}" class="btn btn-primary btn-sm">View Item</a>
-<a href="{{route('items.edit', $item->id) }}" class="btn btn-primary btn-sm">Edit Item</a>
 
-<hr>
+	@foreach($items as $item)
 
-@endforeach
+	<tr style="border-bottom: 1px solid #CECECE;">
 
-@endif
+		<td>{{ $item->itemName}}</td>
+		<td>£{{ number_format((float)$item->price, 2, '.', '') }}</td>
+		<td>{{ $item->quantity}}</td>
+		<td>£{{ number_format((float)$item->price * $item->quantity, 2, '.', '') }}</td> 
 
-@stop
+		<td><a href="{{route('items.show', $item->id) }}" class="btn btn-primary btn-sm">View Item</a></td>
+		<td><a href="{{route('items.edit', $item->id) }}" class="btn btn-primary btn-sm">Edit Item</a></td>
+		
+		<td>{!! Form::open([
+			'method' => 'DELETE',
+			'route' => ['items.destroy', $item->id]
+			]) !!}
+			{!! Form::submit('Delete Item', ['class' => 'btn btn-danger btn-sm']) !!}
+			{!! Form::close() !!}</td>
+			
+		</tr>
+		
+
+		@endforeach
+
+	</table>
+
+	@endif
+
+	@stop

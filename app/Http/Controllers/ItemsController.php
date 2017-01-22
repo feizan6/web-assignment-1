@@ -112,22 +112,17 @@ class ItemsController extends Controller
 
 	}
 
-	
+
 
 	public static function results(Request $request)
 	{
 
-			// Gets the query string from our form submission 
     $query = $request->input('search');
-    // Returns an array of articles that have the query string located somewhere within 
-    // our articles titles. Paginates them so we can break up lots of search results.
+
   	$items = \DB::table('items')->where('itemName', 'LIKE', '%' . $query . '%')->paginate(10);
         
-	// returns a view and passes the view the list of articles and the original query.
     return view('items.search', compact('items', 'query'));
 
-
-   	
  	}
 
 
@@ -142,7 +137,9 @@ class ItemsController extends Controller
 		])
 		->get();
 
-		return $items->sum('total');
+		$total = $items->sum('total');
+
+		return number_format((float)$total, 2, '.', '');
 
 	}
 

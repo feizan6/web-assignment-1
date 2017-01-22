@@ -2,13 +2,15 @@
 
 @section('content')
 
-<h1>Item : {{ $item->itemName }}</h1>
-<p class="lead">Quantity : {{ $item->quantity }}</p>
-<p class="lead">Price : {{ $item->price }}</p>
+<h2>Item Name : {{ $item->itemName }}</h2>
+<h4>Quantity ordered: {{ $item->quantity }}</h4>
+<h4>Price (per item) : £{{ number_format((float)$item->price, 2, '.', '') }}</h4>
+<hr>
+
 <div class="row">
     <div class="col-md-6">
         <a href="{{ route('items.index') }}" class="btn btn-info">Back to items list</a>
-        <a href="{{ route('items.edit', $item->id) }}" class="btn btn-primary">Amend Item</a>
+        <a href="{{ route('items.edit', $item->id) }}" class="btn btn-primary">Amend Item / Quantity</a>
     </div>
     <div class="col-md-6 text-right">
 
@@ -18,7 +20,7 @@
         ]) !!}
         {!! Form::submit('Remove this item?', ['class' => 'btn btn-danger']) !!}
         {!! Form::close() !!}
-        
+
     </div>
 </div>
 
