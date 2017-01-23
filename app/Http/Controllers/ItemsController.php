@@ -8,7 +8,7 @@ use Session;
 
 class ItemsController extends Controller
 {
-    
+
 	// Passes through the array of existing shopping list items and navigates to the view.
 
 	public function index() 
@@ -53,7 +53,7 @@ class ItemsController extends Controller
 	}
 
 
-	// Store a item based on user parameters. Validates data to ensure db integrity. max. quantity of items a user can add is 100. 
+	// Store an item based on user parameters. Validates data to ensure db integrity. max. quantity of items a user can add is 100. 
 
 
 	public function store(Request $request) 
@@ -119,28 +119,28 @@ class ItemsController extends Controller
 	}
 
 
+	// Search function. Produces db item results based on user query.
 
 	public static function results(Request $request)
 	{
 
-    $query = $request->input('search');
+		$query = $request->input('search');
 
-  	$items = \DB::table('items')->where('itemName', 'LIKE', '%' . $query . '%')->paginate(10);
-        
-    return view('items.search', compact('items', 'query'));
+		$items = \DB::table('items')->where('itemName', 'LIKE', '%' . $query . '%')->paginate(10);
 
- 	}
+		return view('items.search', compact('items', 'query'));
+
+	}
 
 
 	// function to calculate total price for items added to the basket.
-	// 
 
 	public static function total()
-    {
+	{
 
-    	$items = Item::select([
-    	'*', \DB::raw('ROUND(quantity * price, 2) AS total')
-		])
+		$items = Item::select([
+			'*', \DB::raw('ROUND(quantity * price, 2) AS total')
+			])
 		->get();
 
 		$total = $items->sum('total');
