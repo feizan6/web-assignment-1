@@ -8,6 +8,13 @@
 <p class="lead">Update the details for the current shopping list item. <a href="{{route('items.index') }}">Go back to your shopping list.</a></p>
 <hr>
 
+@include('partials.alerts.errors')
+
+@if(Session::has('flash_message'))
+    <div class="alert alert-success">
+        {{ Session::get('flash_message') }}
+    </div>
+@endif
 
 {!! Form::model($item, [
     'method' => 'PATCH',

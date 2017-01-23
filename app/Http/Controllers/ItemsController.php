@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Item;
-
+use Session;
 
 class ItemsController extends Controller
 {
@@ -71,6 +71,8 @@ class ItemsController extends Controller
 
 		Item::create($input);
 
+		Session::flash('flash_message', 'Item added successfully!');
+
 		return redirect()->back(); 
 
 	}
@@ -95,7 +97,11 @@ class ItemsController extends Controller
 
 		$item->fill($input)->save();
 
-		return redirect('items');
+		// return redirect('items');
+
+		Session::flash('flash_message', 'Item successfully amended!');
+
+		return redirect()->back(); 
 
 	}
 

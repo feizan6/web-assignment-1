@@ -21,7 +21,7 @@ Route::resource('items', 'ItemsController');
 
 // Route::post('results', 'ItemsController@results');
 
-Route::post('result',[
+Route::post('search-result',[
     'as' => 'items.searchresults',
     'uses' => 'ItemsController@results'
 ]);

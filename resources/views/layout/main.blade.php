@@ -8,7 +8,7 @@
 </head>
 <body>
 
-	<nav class="navbar navbar-default">
+	<nav class="navbar navbar-inverse">
 		<div class="container-fluid">
 			<div class="navbar-header">
 				<a class="navbar-brand" href="{{ route('items.index') }}">Items</a>
@@ -23,7 +23,6 @@
 					array('class'=>'btn btn-default')) !!}
 					{!! Form::close() !!}</li>
 				<li><a href="{{ route('home') }}">Home</a></li>
-				<li><a href="{{ route('items.index')}}">List</a></li>
 			</div>
 		</div>
 	</nav>

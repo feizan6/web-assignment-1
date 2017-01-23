@@ -7,6 +7,7 @@
 
 <p class="lead">All your items so far...<a href="{{ route('items.create')}}">Add another item?</a>
 
+
 	<table style="width:100%" class="table table-hover">
 		<tr>
 
